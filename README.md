@@ -1,9 +1,9 @@
 # ADS-506-Time-Series-
 Group 8
 Team Members:
-Vivian DO
-Joel Day
-Jiaqi He
+  Vivian Do
+  Joel Day
+  Jiaqi He
 
 
 ## Problem Statement
