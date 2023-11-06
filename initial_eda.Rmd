@@ -1,0 +1,24 @@
+# library import
+library(readr)
+library(fpp2)
+library(zoo)
+library(tidyverse)
+
+# read in data
+df <- read_csv('PLOO_water_temperature_2022_datasd.csv')
+
+# splice for only measurement readings at depth 1m
+df_1m <- subset(df, depth_m==1)
+summary(df_1m)
+
+# Convert the start date string into a POSIXct object
+df_1m$datetime_pst <- as.POSIXct(df_1m$datetime_pst, format='%Y-%m-%d %H:%M:%S')
+
+# Create the time series
+df_1m_ts <- ts(df_1m$value)
+autoplot(df_1m_ts, main='Real-time Oceanographic Mooring System: Point Loma Ocean 2022', series='1m depth',
+ylab='Water Temperature (Degrees Celsius)')
+
+# see distribution of water temperatures
+hist(df_1m$value, main='Water Temperature Distribution', xlab= 'Water Temperature (Degrees Celsius)')
+summary(df_1m$value)
